@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 
 class App extends React.Component {
+  onClickButton() {
+    alert("alert!");
+  }
   render() {
-    return <h1>Hello {this.props.name}</h1>;
+    return <button onClick={this.onClickButton}>Press</button>;
   }
 }
 
 ReactDOM.render(
-  <App name={"Bob"}/>,
+  <App />,
   document.getElementById("app")
 )
