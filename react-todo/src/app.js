@@ -5,19 +5,28 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      count: 0
+      input: "",
+      todos: []
     }
-    this.onClickButton = this.onClickButton.bind(this);
+    this.addToDo = this.addToDo.bind(this);
   }
-  onClickButton() {
-    let { count } = this.state;
-    this.setState({count: count + 1});
+  addToDo() {
+    let { todos, input } = this.state;
+    todos = todos.concat(input);
+    this.setState({todos: todos, input: ""});
   }
   render() {
     return (
       <div>
-        <h1>(クリックした回数: {this.state.count})</h1>
-        <button onClick={this.onClickButton}>Press</button>
+        <h1>新しいタスク</h1>
+        <input type="text" onChange={e => this.setState({input: e.target.value})} value={this.state.input}/>
+        <button onClick={this.addToDo}>追加</button>
+        <h2>ToDo:</h2>
+        <ul>
+          {this.state.todos.map(todo => {
+            return <li key={todo}>{todo}</li>
+          })}
+        </ul>
       </div>
     )
   }
