@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
+import Todo from './todos';
 
 class App extends React.Component {
   constructor() {
@@ -12,6 +13,7 @@ class App extends React.Component {
     }
     this.addToDo = this.addToDo.bind(this);
     this.tick = this.tick.bind(this);
+    this.removeToDo = this.removeToDo.bind(this);
   }
   tick() {
     let { time } = this.state;
@@ -30,6 +32,11 @@ class App extends React.Component {
     todos = todos.concat(input);
     this.setState({todos: todos, input: ""});
   }
+  removeToDo(i) {
+    let { todos } = this.state;
+    todos = todos.slice(0, i).concat(todos.slice(i + 1));
+    this.setState({todos: todos, input: ""});
+  }
   render() {
     return (
       <div>
@@ -39,11 +46,7 @@ class App extends React.Component {
         <h2>現在の時間</h2>
         <span>今の時間 {this.state.time.toLocaleTimeString()}</span>
         <h2>ToDo:</h2>
-        <ul>
-          {this.state.todos.map(todo => {
-            return <li key={todo}>{todo}</li>
-          })}
-        </ul>
+        <Todo todos={this.state.todos} removeToDo={this.removeToDo} />
       </div>
     )
   }
