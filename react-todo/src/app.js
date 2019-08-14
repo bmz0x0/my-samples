@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Todo from './todos';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -52,7 +51,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById("app")
-)

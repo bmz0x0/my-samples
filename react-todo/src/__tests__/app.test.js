@@ -1,10 +1,20 @@
+import shim from './../shim.js';
+import React from 'react';
+import { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import App from './../app.js';
+
+configure({ adapter: new Adapter() });
 
 describe('test', ()=>{
-  it('test 1', ()=>{
-    expect(1 + 1).toBe(2)
-  })
+  const app = shallow(<App />);
 
-  it('test 2', ()=>{
-    expect("a" + "b").toBe("ab")
+  it('input', ()=>{
+    app.find('input').simulate('change', {target: {value: 'My new value'}});
+    expect(app.state('input')).toBe('My new value');
+
+    app.find('button').simulate('click');
+    expect(app.state('input')).toBe('');
   })
 })
+
