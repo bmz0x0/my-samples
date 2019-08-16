@@ -1,4 +1,4 @@
-# React-samples
+# my-samples
 
-My react samples.
+My samples.
 
