@@ -19,5 +19,5 @@ io.on('connection', (socket) => {
 
 cron.schedule('*/3 * * * * *', () => {
   console.log('excute cron task.');
-  io.emit('chat message', 'cron');
+  io.emit('message', 'cron');
 });

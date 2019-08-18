@@ -11,7 +11,7 @@ class App extends React.Component {
 
     this.socket = io();
     this.addData = this.addData.bind(this);
-    this.socket.on("chat message", (msg) => {
+    this.socket.on("message", (msg) => {
       this.addData(msg);
     });
   }
