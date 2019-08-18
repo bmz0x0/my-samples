@@ -3,6 +3,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const cron = require('node-cron');
+const stats = require('cpu-stats');
 
 app.use(express.static('./dist'));
 
@@ -19,5 +20,7 @@ io.on('connection', (socket) => {
 
 cron.schedule('*/3 * * * * *', () => {
   console.log('excute cron task.');
-  io.emit('message', 'cron');
+  stats(100, (error, result) => {
+    io.emit('message', result[0].cpu);
+  });
 });
