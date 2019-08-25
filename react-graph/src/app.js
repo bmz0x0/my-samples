@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import io from 'socket.io-client';
+import { LineChart, Line, XAxis, YAxis } from 'recharts';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      index: 0
     };
 
     this.socket = io();
@@ -16,20 +18,26 @@ class App extends React.Component {
     });
   }
   addData(msg) {
-    let { data } = this.state;
-    data = data.concat(msg);
-    this.setState({data: data});
+    let { data, index} = this.state;
+    let temp;
+    temp = {cpu: msg, index: index};
+    data = data.concat(temp);
+    index++;
+    if ( data.length > 20 ) {
+    }
+    this.setState({data: data, index: index});
   }
   render() {
     const { data } = this.state;
+    console.log(data);
     return (
       <div>
         <h1>msg受信</h1>
-        {data.map((msg, i) =>{
-          return(
-            <li key={i}>{msg}</li>
-          )
-        })}
+        <LineChart width={400} height={400} data={data}>
+          <Line dataKey="cpu" stroke="#888888" />
+          <XAxis dataKey="name" />
+          <YAxis />
+        </LineChart>
       </div>
     );
   }

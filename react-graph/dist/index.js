@@ -21,6 +21,7 @@ io.on('connection', (socket) => {
 cron.schedule('*/3 * * * * *', () => {
   console.log('excute cron task.');
   stats(100, (error, result) => {
-    io.emit('message', result[0].cpu);
+    console.log('debug: ' + result[0].cpu);
+    io.emit('message', result[0].cpu.toFixed(3));
   });
 });
