@@ -24,6 +24,7 @@ class App extends React.Component {
     data = data.concat(temp);
     index++;
     if ( data.length > 20 ) {
+      data.shift();
     }
     this.setState({data: data, index: index});
   }
@@ -36,7 +37,7 @@ class App extends React.Component {
         <LineChart width={400} height={400} data={data}>
           <Line dataKey="cpu" stroke="#888888" />
           <XAxis dataKey="name" />
-          <YAxis />
+          <YAxis domain={[0, 100]} />
         </LineChart>
       </div>
     );
