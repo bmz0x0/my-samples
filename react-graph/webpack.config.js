@@ -24,7 +24,7 @@ const config = {
     {
       test: /\.css$/,
       exclude: path.resolve(__dirname, 'node_modules'),
-      loader: ["style-loader", "css-loader"]
+      loader: ["style-loader", "css-loader?modules"],
     }]
   },
 };

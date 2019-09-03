@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import io from 'socket.io-client';
 import { LineChart, Line, XAxis, YAxis } from 'recharts';
+import styles from './styles.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,15 @@ class App extends React.Component {
     console.log(data);
     return (
       <div>
+        <header>
+          <nav>
+            <ul className={styles.mainnav}>
+              <li>a</li>
+              <li>b</li>
+              <li>c</li>
+            </ul>
+          </nav>
+        </header>
         <h1>msg受信</h1>
         <LineChart width={400} height={400} data={data}>
           <Line dataKey="cpu" stroke="#888888" />

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+html {
+  font-size: 100%;
+}
+body {
+  background-color: #fffeee;
+}
+header {
+  background-color: #CCC;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.mainnav {
+  display: flex;
+  font-size: 5rem;
+  text-transform: uppercase;
+  list-style: none;
+}
+.mainnav li {
+  color: white;
+  background-color: #24ADE2;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.mainnav a:hover {
+  color: #0bd;
+}
