@@ -29,6 +29,15 @@ class App extends React.Component {
     }
     this.setState({data: data, index: index});
   }
+  onClickA() {
+    console.log("Clicked A.")
+  }
+  onClickB() {
+    console.log("Clicked B.")
+  }
+  onClickC() {
+    console.log("Clicked C.")
+  }
   render() {
     const { data } = this.state;
     console.log(data);
@@ -37,9 +46,9 @@ class App extends React.Component {
         <header>
           <nav>
             <ul className={styles.mainnav}>
-              <li>a</li>
-              <li>b</li>
-              <li>c</li>
+              <li onClick={this.onClickA}>a</li>
+              <li onClick={this.onClickB}>b</li>
+              <li onClick={this.onClickC}>c</li>
             </ul>
           </nav>
         </header>
