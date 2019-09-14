@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const config = {
-  entry: './src/app.js',
+  entry: './src/app.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.js'
@@ -14,7 +14,7 @@ const config = {
   },
   module: {
     rules:[{
-      test: /\js$/,
+      test: /\jsx$/,
       exclude: path.resolve(__dirname, 'node_modules'),
       loader: 'babel-loader',
       query: {
