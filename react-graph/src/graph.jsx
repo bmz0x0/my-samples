@@ -10,11 +10,17 @@ class Graph extends React.Component {
       data: [],
       index: 0,
     };
+  }
+  componentDidMount() {
     this.socket = io();
-    this.addData = this.addData.bind(this);
     this.socket.on("message", (msg) => {
       this.addData(msg);
     });
+  }
+  componentWillUnmount() {
+    this.socket.off("message");
+    this.socket.disconnect(true);
+    delete this.socket;
   }
   addData(msg) {
     let { data, index} = this.state;

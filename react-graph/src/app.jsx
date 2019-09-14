@@ -1,32 +1,51 @@
+"use strict";
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './styles.css'
 import Graph from './graph.jsx'
+import About from './about.jsx'
+
+const pageGraph = 0;
+const pageAbout = 1;
 
 class App extends React.Component {
-  onClickA() {
-    console.log("Clicked A.")
+
+  constructor() {
+    super();
+    this.state = {
+      selectedPage: pageGraph,
+    };
   }
-  onClickB() {
-    console.log("Clicked B.")
+  onClickMenu(page) {
+    console.log("Clicked Page: " + page);
+    this.setState({selectedPage: page});
   }
-  onClickC() {
-    console.log("Clicked C.")
-  }
+
   render() {
+    let mainView;
+    let {selectedPage} = this.state;
+    switch (selectedPage) {
+      case pageGraph:
+        mainView = <Graph />;
+        break;
+      case pageAbout:
+        mainView = <About />;
+        break;
+      default:
+        break;
+    }
     return (
       <div>
         <header>
           <nav>
             <ul className={styles.mainnav}>
-              <li onClick={this.onClickA}>a</li>
-              <li onClick={this.onClickB}>b</li>
-              <li onClick={this.onClickC}>c</li>
+              <li key={pageGraph} onClick={(p) => this.onClickMenu(pageGraph)}>グラフ</li>
+              <li key={pageAbout} onClick={(p) => this.onClickMenu(pageAbout)}>about</li>
             </ul>
           </nav>
         </header>
-        <h1>msg受信</h1>
-        <Graph />
+        {mainView}
       </div>
     );
   }

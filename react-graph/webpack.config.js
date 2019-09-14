@@ -18,13 +18,20 @@ const config = {
       exclude: path.resolve(__dirname, 'node_modules'),
       loader: 'babel-loader',
       query: {
-        presets: ['@babel/preset-react', '@babel/preset-env']
-      }
+        presets: ['@babel/preset-react', '@babel/preset-env'],
+      },
     },
     {
       test: /\.css$/,
       exclude: path.resolve(__dirname, 'node_modules'),
       loader: ["style-loader", "css-loader?modules"],
+    },{
+      test: /\.(png|jpe?g|gif)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+        },
+      ]
     }]
   },
 };
