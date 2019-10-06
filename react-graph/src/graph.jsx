@@ -38,7 +38,7 @@ class Graph extends React.Component {
     console.log(data);
     return (
       <AreaChart width={800} height={400} data={data}>
-        <Area dataKey="cpu" stroke="#888888" />
+        <Area type="monotone" dataKey="cpu" stroke="#888888" isAnimationActive={false}/>
         <XAxis dataKey="count"/>
         <YAxis domain={[0, 100]}/>
       </AreaChart>
