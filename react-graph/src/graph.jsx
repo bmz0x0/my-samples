@@ -37,7 +37,7 @@ class Graph extends React.Component {
     const { data } = this.state;
     console.log(data);
     return (
-      <AreaChart width={400} height={400} data={data}>
+      <AreaChart width={800} height={400} data={data}>
         <Area dataKey="cpu" stroke="#888888" />
         <XAxis dataKey="count"/>
         <YAxis domain={[0, 100]}/>
